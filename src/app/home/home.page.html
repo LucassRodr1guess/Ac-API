@@ -7,41 +7,55 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-content>
-    <ion-item>
-      <ion-label position="stacked">Digite o CEP</ion-label>
-      <ion-input [(ngModel)]="cep" type="text" placeholder="CEP"></ion-input>
-    </ion-item>
-    <ion-button expand="full" (click)="consultarCEP()">Consultar</ion-button>
+  <ion-item>
+    <ion-label position="stacked">Digite o CEP</ion-label>
+    <ion-input [(ngModel)]="cep" type="text" placeholder="CEP"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="consultarCEP()">Consultar</ion-button>
 
-    <ion-label position="stacked">Digite a Sigla</ion-label>
+
+
+  <ion-card *ngIf="endereco">
+    <ion-card-header>
+      Resultado - CEP
+    </ion-card-header>
+    <ion-card-content>
+      <p>CEP: {{ endereco.cep }}</p>
+      <p>Logradouro: {{ endereco.logradouro }}</p>
+      <p>Bairro: {{ endereco.bairro }}</p>
+      <p>Cidade: {{ endereco.localidade }}</p>
+      <p>Estado: {{ endereco.uf }}</p>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-item>
+    <ion-label position="stacked">Digite a Sigla do estado</ion-label>
     <ion-input [(ngModel)]="uf" type="text" placeholder="Sigla"></ion-input>
- 
-  <ion-button expand="full" (click)="consultarSigla()">Consultar</ion-button>
-  
-    <ion-card *ngIf="endereco">
-      <ion-card-header>
-        Resultado
-      </ion-card-header>
-      <ion-card-content>
-        <p>CEP: {{ endereco.cep }}</p>
-        <p>Logradouro: {{ endereco.logradouro }}</p>
-        <p>Bairro: {{ endereco.bairro }}</p>
-        <p>Cidade: {{ endereco.localidade }}</p>
-        <p>Estado: {{ endereco.uf }}</p>
-      </ion-card-content>
-    </ion-card>
+  </ion-item>
 
-    <ion-card *ngIf="endereco">
-      <ion-card-header>
-        Resultado - Sigla
-      </ion-card-header>
-      <ion-card-content>
-        <p>CEP: {{ endereco.cep }}</p>
-        <p>Logradouro: {{ endereco.logradouro }}</p>
-        <p>Bairro: {{ endereco.bairro }}</p>
-        <p>Cidade: {{ endereco.localidade }}</p>
-        <p>Estado: {{ endereco.uf }}</p>
-      </ion-card-content>
-    </ion-card>
+  <ion-item>
+    <ion-label position="stacked">Digite a cidade</ion-label>
+    <ion-input [(ngModel)]="localidade" type="text" placeholder="Cidade"></ion-input>
+  </ion-item>
 
+  <ion-item>
+    <ion-label position="stacked">Digite o nome da Rua</ion-label>
+    <ion-input [(ngModel)]="logradouro" type="text" placeholder="Rua ..."></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="consultar2()" [disabled]="!uf || !localidade || !logradouro">Consultar 2</ion-button>
+
+  <ion-card *ngIf="endereco2">
+    <ion-card-header>
+      Resultado - Sigla, cidade e rua
+    </ion-card-header>
+    <ion-card-content>
+      <p>Estado: {{ endereco2.uf }}</p>
+      <p>Cidade: {{ endereco2.localidade }}</p>
+      <p>Logradouro: {{ endereco2.logradouro }}</p>
+      <p>Bairro: {{ endereco2.bairro }}</p>
+      <p>CEP: {{ endereco2.cep }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -10,6 +10,10 @@ export class HomePage {
   cep: string = '';
   endereco: any;
   uf: string = '';
+  localidade: string = '';
+  logradouro: string = '';
+  endereco2: any;
+  
 
   constructor(private http: HttpClient) {}
 
@@ -20,14 +24,20 @@ export class HomePage {
       this.http.get(url).subscribe((data: any) => {
         this.endereco = data;
       });
-    };
-  }
-    consultarSigla() {
-      if (this.uf) {
-        const url = `https://viacep.com.br/ws/${this.uf}/json/`;
+      
+    }
+    }
+
+    consultar2(){
+       if (this.uf && this.localidade && this.logradouro){
+        const ufEncoded = encodeURIComponent(this.uf);
+        const localidadeEncoded = encodeURIComponent(this.localidade);
+        const logradouroEncoded = encodeURIComponent(this.logradouro);
+        const url2 = `https://viacep.com.br/ws/${this.uf}/${this.localidade}/${this.logradouro}/json/`; 
   
-        this.http.get(url).subscribe((data: any) => {
-          this.endereco = data;
+        this.http.get(url2).subscribe((data:any) =>{
+          this.endereco2 = data;
         });
-      };
-  }}
+    }
+  }
+}
