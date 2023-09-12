@@ -51,11 +51,14 @@
       Resultado - Sigla, cidade e rua
     </ion-card-header>
     <ion-card-content>
-      <p>Estado: {{ endereco2.uf }}</p>
-      <p>Cidade: {{ endereco2.localidade }}</p>
-      <p>Logradouro: {{ endereco2.logradouro }}</p>
-      <p>Bairro: {{ endereco2.bairro }}</p>
-      <p>CEP: {{ endereco2.cep }}</p>
+      <div *ngFor="let enderecoFinal of endereco2">
+      <p>Estado: {{ enderecoFinal.uf }}</p>
+      <p>Cidade: {{ enderecoFinal.localidade }}</p>
+      <p>Logradouro: {{ enderecoFinal.logradouro }}</p>
+      <p>Bairro: {{ enderecoFinal.bairro }}</p>
+      <p>CEP: {{ enderecoFinal.cep }}</p>
+      <p>-----------------------------------------------------------</p>
+    </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

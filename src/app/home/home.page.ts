@@ -13,6 +13,7 @@ export class HomePage {
   localidade: string = '';
   logradouro: string = '';
   endereco2: any;
+  enderecoFinal: any;
   
 
   constructor(private http: HttpClient) {}
@@ -24,7 +25,6 @@ export class HomePage {
       this.http.get(url).subscribe((data: any) => {
         this.endereco = data;
       });
-      
     }
     }
 
