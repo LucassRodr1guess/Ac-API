@@ -1,17 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Consulta CEP
+      Consulta API - viacep
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-card-header>API Viacep</ion-card-header>
+    <ion-card-content>
+      A API ViaCEP é uma ferramenta fundamental para quem busca informações detalhadas sobre CEP (Código de Endereçamento Postal) no Brasil. Mantida e disponibilizada pelos Correios, esta API oferece uma maneira prática e gratuita de acessar dados essenciais de endereçamento, facilitando a vida de desenvolvedores, empresas e indivíduos que necessitam de informações precisas sobre localidades brasileiras.
+    </ion-card-content>
+  </ion-card>
   <ion-item>
     <ion-label position="stacked">Digite o CEP</ion-label>
     <ion-input [(ngModel)]="cep" type="text" placeholder="CEP"></ion-input>
   </ion-item>
-  <ion-button expand="full" (click)="consultarCEP()">Consultar</ion-button>
+  <ion-button expand="full" (click)="consultarCEP()">Consulta CEP</ion-button>
 
 
 
@@ -21,22 +28,22 @@
     </ion-card-header>
     <ion-card-content>
       <p>CEP: {{ endereco.cep }}</p>
-      <p>Logradouro: {{ endereco.logradouro }}</p>
-      <p>Bairro: {{ endereco.bairro }}</p>
-      <p>Cidade: {{ endereco.localidade }}</p>
       <p>Estado: {{ endereco.uf }}</p>
+      <p>Cidade: {{ endereco.localidade }}</p>
+      <p>Bairro: {{ endereco.bairro }}</p>
+      <p>Logradouro: {{ endereco.logradouro }}</p>
     </ion-card-content>
   </ion-card>
 
 
   <ion-item>
     <ion-label position="stacked">Digite a Sigla do estado</ion-label>
-    <ion-input [(ngModel)]="uf" type="text" placeholder="Sigla"></ion-input>
+    <ion-input [(ngModel)]="uf" type="text" placeholder="Sigla..."></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="stacked">Digite a cidade</ion-label>
-    <ion-input [(ngModel)]="localidade" type="text" placeholder="Cidade"></ion-input>
+    <ion-input [(ngModel)]="localidade" type="text" placeholder="Cidade..."></ion-input>
   </ion-item>
 
   <ion-item>
@@ -44,7 +51,7 @@
     <ion-input [(ngModel)]="logradouro" type="text" placeholder="Rua ..."></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="consultar2()" [disabled]="!uf || !localidade || !logradouro">Consultar 2</ion-button>
+  <ion-button expand="full" (click)="consultar2()" [disabled]="!uf || !localidade || !logradouro" className="corbtn">Consulta</ion-button>
 
   <ion-card *ngIf="endereco2">
     <ion-card-header>
@@ -54,8 +61,8 @@
       <div *ngFor="let enderecoFinal of endereco2">
       <p>Estado: {{ enderecoFinal.uf }}</p>
       <p>Cidade: {{ enderecoFinal.localidade }}</p>
-      <p>Logradouro: {{ enderecoFinal.logradouro }}</p>
       <p>Bairro: {{ enderecoFinal.bairro }}</p>
+      <p>Logradouro: {{ enderecoFinal.logradouro }}</p>
       <p>CEP: {{ enderecoFinal.cep }}</p>
       <p>-----------------------------------------------------------</p>
     </div>

@@ -25,7 +25,7 @@ export class HomePage {
       this.http.get(url).subscribe((data: any) => {
         this.endereco = data;
       });
-    }
+    } 
     }
 
     consultar2(){
